@@ -8,7 +8,11 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
+
+import android.util.Log;
+import android.widget.Toast;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -44,13 +48,32 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+    showDebugDBAddressLogToast(this);
   }
+
+
+public static void showDebugDBAddressLogToast(Context context) {
+    if (BuildConfig.DEBUG) {
+       try {
+            Class<?> debugDB = Class.forName("com.amitshekhar.DebugDB");
+            Method getAddressLog = debugDB.getMethod("getAddressLog");
+            Object value = getAddressLog.invoke(null);
+         //   Toast.makeText(context, (String) value, Toast.LENGTH_LONG).show();
+           Log.i("--------------------",(String) value);
+       } catch (Exception ignore) {
+
+       }
+    }
+}
 
   /**
    * Loads Flipper in React Native templates.
    *
    * @param context
    */
+
+
+   
   private static void initializeFlipper(Context context) {
     if (BuildConfig.DEBUG) {
       try {

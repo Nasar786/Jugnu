@@ -5,7 +5,7 @@ SafeAreaView,
 Dimensions,
 Image,
 TouchableOpacity } from 'react-native';
-
+import database from '../database/database'
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,7 +16,12 @@ export default class ActivationScreen extends Component {
     super(props);
     this.state = {
     };
+  
   }
+
+componentDidMount(){
+  database.dbinit();
+}
 
   render() {
     return (

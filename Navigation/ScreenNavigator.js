@@ -6,8 +6,43 @@ import CreatePasswordScreen from '../Screens/CreatePasswordScreen';
 import CreateProfile from '../Screens/CreateProfile';
 import CnicScreen from '../Screens/CnicScreen';
 import ActivationScreen from '../Screens/ActivationScreen'; 
+import DbHomeScreen from '../Screens/DbHomeScreen'; 
+import Modal from '../Component/ModalScreen';
+import DisplayItem from '../Screens/DisplayItem';
 
 const MainNavigator = createStackNavigator({
+   
+   
+    FList: {
+        screen: DisplayItem,
+
+        navigationOptions: {
+            headerShown: false 
+        }
+
+    },
+
+     
+    DbHome: {
+        screen: DbHomeScreen,
+
+        navigationOptions: {
+            headerShown: false 
+        }
+
+    },
+ 
+
+Modal:{
+screen: Modal,
+
+navigationOptions: {
+    headerShown: false 
+}
+
+
+},
+
     CnicScreen: {
         screen: CnicScreen,
 
@@ -59,8 +94,8 @@ ActivationScreen:{
         headerShown: false 
     }
 
-}    
-    //Profile: {screen: ProfileScreen},
+},   
+
 
 });
 
